@@ -1,6 +1,17 @@
 # ========== Projeto pyDrugstore ========== #
 import os
 
+#-----------------------Dicionários--------------------------#
+products = {}
+
+
+sales = {}
+
+
+clients = {}
+
+#------------------------------------------------------------
+
 module = " "
 
 while module != "0":
@@ -40,6 +51,7 @@ while module != "0":
     """)
             module2 = input("Escolha sua opção\n->")
         
+           
             if module2 == "1":
                 os.system('cls || clear')
 
@@ -47,10 +59,26 @@ while module != "0":
                 print("|=-=-=-=-=-> Cadastrar Produto <-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
                 
-                
+                print("--" * 10)
+                name = str(input(" Nome: "))
+                print()
+                code = str(input(" Código: "))
+                print()
+                fabrication = str(input(" Data de Fabricação: "))
+                print()
+                validity = str(input(" Data de Validade: "))
+                print()
+                price = float(input(" Preço: "))
+                print()
+                products[code] = [name, fabrication, validity, price]
+                print(products)
+                print("--" * 10)
+                print()
+                print("Produto Cadastrado com Sucesso!")
+                print()
+                input("Pressione <ENTER> para continuar.")              
 
-              
-
+           
             elif module2 == "2":
                 os.system('cls || clear')
 
@@ -58,16 +86,21 @@ while module != "0":
                 print("|=-=-=-=-=-=->  Exibir Dados  <-=-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
+                code = input("Digite o Código do Produto: ")
+
+                if code in products:
+                    print("--" * 10)
+                    print("Nome: ", products[code][0])
+                    print("Data de Fabricação: ", products[code][1])
+                    print("Data de Validade: ", products[code][2])
+                    print("Preço: R$ ", products[code][3])
+                    print("--" * 10)
+                else:
+                    print("Produto inexistente!")
                 
+                input("Pressione <ENTER> para continuar.")
 
-
-
-
-
-
-
-
-
+            
             elif module2 == "3":
                 os.system('cls || clear')
 
@@ -75,10 +108,26 @@ while module != "0":
                 print("|=-=-=-=-=-=-> Alterar Dados <-=-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
+                code = input("Digite o Código do Produto: ")
 
+                if code in products:
+                    print("--" * 10)
+                    print("Insira os novos dados:")
+                    print()
+                    name = input("Nome: ")
+                    fabrication = input("Data de Fabricação: ")
+                    validity = input("Data de Validade:")
+                    price = input("Preço: R$ ")
+                    print("--" * 10)
+                    products[code] = [name, fabrication, validity, price]
+                    print(products)
+                    print()
+                else:
+                    print("Produto inexistente!")
 
-
-
+                print("Produto Alterado com Sucesso!")
+                print()   
+                input("Pressione <ENTER> para continuar.")
 
 
             elif module2 == "4":
@@ -87,6 +136,23 @@ while module != "0":
                 print("___________________________________________")
                 print("|=-=-=-=-=-> Excluir Produto <-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+
+                code = input("Digite o Código do Produto: ")
+
+                if code in products:
+                    del products[code]
+
+                else:
+                    print("Produto inexistente!")
+                
+                print("Produto Excluído com Sucesso!")
+                print()
+                input("Pressione <ENTER> para continuar")
+
+
+
+
+
  #-----------------------------------------------------------------------#   
    
     elif module == "2":
@@ -217,14 +283,14 @@ while module != "0":
         os.system('cls || clear')
         
         print("""
-    ___________________________________________________________
-    |=-=-=-=-=-=> Você está no Módulo Informações <=-=-=-=-=-=|              
-    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-    |=-=-=>      Projeto de Gestão de uma Farmácia      <=-=-=|
-    |=-=-=-=-=>   Desenvolvedor: Kaio Márcio        <=-=-=-=-=|
-    |=-=-=-=-=>   Email: kaio.lira.080@ufrn.edu.br  <=-=-=-=-=|
-    |=-=-=-=-=>   Whatsapp: (83) 9 8716-3046        <=-=-=-=-=|
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    ______________________________________________________________
+    |-=-=-=-=-=-=> Você está no Módulo Informações <=-=-=-=-=-=-=|              
+    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
+    |=-=-=-=-=>    Projeto de Gestão de uma Farmácia   <=-=-=-=-=|
+    |=-=-=-=-=>    Desenvolvedor: Kaio Márcio          <=-=-=-=-=|
+    |=-=-=-=-=>    Email: kaio.lira.080@ufrn.edu.br    <=-=-=-=-=|
+    |=-=-=-=-=>    Whatsapp: (83) 9 8716-3046          <=-=-=-=-=|
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     """)
         input("Pressione <ENTER> para continuar.")            
 #-------------------------------------------------------------------------#
