@@ -1,4 +1,13 @@
-# ========== Projeto pyDrugstore ========== #
+#=====================================================#
+#===============| Projeto pyDrugstore |===============#
+#=====================================================#
+#====|     Sistema de Gestão de uma Farmácia     |====#
+#====|      Sistemas de Informação / UFRN        |====#
+#====|    Lógica e Algoritmos de Programação     |====#
+#====|          Aluno: Kaio Márcio               |====#
+#=====================================================#
+
+
 import os
 
 #-----------------------Dicionários--------------------------#
@@ -128,10 +137,10 @@ while module != "0":
                     print("--" * 10)
                     products[code] = [product_name, fabrication, validity, price]
                     print(products)
-                    print()
                 else:
                     print("Produto inexistente!")
 
+                print()
                 print("Produto Alterado com Sucesso!")
                 print()   
                 input("Pressione <ENTER> para continuar.")
@@ -187,11 +196,24 @@ while module != "0":
                 print("___________________________________________")
                 print("|-=-=-=-=-=-> Cadastrar Venda <-=-=-=-=-=-|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-
+#fazer o sale number ser automatico com while
+#colocar cliente
+                print("--" * 10)
+                sale_number = str(input("Informe o Número da Venda: "))
+                print()
+                item = str(input("Código do Produto: "))
+                print()
+                quant = str(input("Quantidade: "))
+                print()
+                data = str(input("Data da venda: "))
+                sales[sale_number] = [item, quant, data]
+                print(sales)
+                print("--" * 10)
+                print()
+                print("Venda Cadastrada com Sucesso!")
+                print()
+                input("Pressione <ENTER> para continuar.")
                 
-
-                
-
             elif module2 == "2":
                 os.system('cls || clear')
 
@@ -199,6 +221,20 @@ while module != "0":
                 print("|=-=-=-=-=-> Exibir Venda <-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
+                sale_number = input("Insira o Número da Venda: ")
+
+                if sale_number in sales:
+                    print("--" * 10)
+                    print("Produto: ", sales[sale_number][0])
+                    print()
+                    print("Quantidade: ", sales[sale_number][1])
+                    print()
+                    print("Data da Venda: ", sales[sale_number][2])
+                    print("--" * 10)
+                else:
+                    print("Venda Inexistente!")
+                
+                input("Pressione <ENTER> para prosseguir.")
                 
 
             elif module2 == "3":
@@ -208,7 +244,27 @@ while module != "0":
                 print("|=-=-=-=-=-> Alterar Venda <-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
+                sale_number = input("Insira o Número da Venda: ")
+
+                if sale_number in sales:
+                    print("--" * 10)
+                    print("Insira os Novos Dados:")
+                    print()
+                    item = str(input("Código do Produto: "))
+                    print()
+                    quant = str(input("Quantidade: "))
+                    print()
+                    data = str(input("Data da Venda: "))
+                    print("--" * 10)
+                    sales[sale_number] = [item, quant, data]
+                    print(sales)
+                else:
+                    print("Venda Inexistente!")
                 
+                print()
+                print("Venda Alterada com Sucesso!")
+                print()
+                input("Pressione <ENTER> para continuar.")
             
             elif module2 == "4":
                 os.system('cls || clear')
@@ -217,14 +273,16 @@ while module != "0":
                 print("|=-=-=-=-=-> Excluir Venda <-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
+                sale_number = input("Insira o Número da Venda: ")
 
-
-
-
-
-        
-        
-        
+                if sale_number in sales:
+                    del sales[sale_number]
+                else:
+                    print("Venda Inexistente!")
+                
+                print("Venda Excluída com Sucesso!")
+                print()
+                input("Pressione <ENTER> para continuar.")
 #-------------------------------------------------------------------------#    
    
     elif module == "3":
@@ -275,7 +333,7 @@ while module != "0":
                 print("|=-=-=-=-=-> Exibir Cliente <-=-=-=-=-=|")
                 print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
-                cpf = str(input("Digite o Cpf do Cliente: "))
+                cpf = str(input("Insira o Cpf do Cliente: "))
 
                 if cpf in clients:
                     print("--" * 10)
