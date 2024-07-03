@@ -1,16 +1,16 @@
-#=====================================================#
-#===============| Projeto pyDrugstore |===============#
-#=====================================================#
-#====|     Sistema de Gestão de uma Farmácia     |====#
-#====|      Sistemas de Informação / UFRN        |====#
-#====|    Lógica e Algoritmos de Programação     |====#
-#====|          Aluno: Kaio Márcio               |====#
-#=====================================================#
+#===========================================================#
+#=================|  Projeto pyDrugstore  |=================#
+#===========================================================#
+#=======|     Sistema de Gestão de uma Farmácia     |=======#
+#=======|      Sistemas de Informação / UFRN        |=======#
+#=======|    Lógica e Algoritmos de Programação     |=======#
+#=======|          Aluno: Kaio Márcio               |=======#
+#===========================================================#
 
 
 import os
-
-#-----------------------Dicionários--------------------------#
+   
+#---------------------------------Dicionários--------------------------------#
 products = {}
 
 
@@ -19,11 +19,8 @@ sales = {}
 
 clients = {}
 
-#------------------------------------------------------------#
-
-module = " "
-
-while module != "0":
+#-----------------------------------Funções----------------------------------#
+def menu_principal():
     os.system('cls || clear')
 
     print("""
@@ -39,137 +36,148 @@ while module != "0":
     ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ 
     """)
     module = input("Escolha sua opção\n->")
-
-#---------------------------------------------------------------------------#
-   
-    if module == "1":
-        
-        module2 = " "
-        
-        while module2 != "0":
-            os.system('cls || clear')
-            print("""
-    __________________________________________________________
-    |=-=-=-=-=-=-> Você está no Módulo Produtos <-=-=-=-=-=-=|              
-    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-    |=-=-=-=-=->    1 - Cadastrar Produto          <-=-=-=-=-|
-    |=-=-=-=-=->    2 - Exibir Dados do Produto    <-=-=-=-=-|
-    |=-=-=-=-=->    3 - Alterar Dados do Produto   <-=-=-=-=-|
-    |=-=-=-=-=->    4 - Excluir Produto            <-=-=-=-=-|
-    |=-=-=-=-=->    0 - Retornar ao menu principal <-=-=-=-=-|
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    return module
+#----------------------------------------------------------------------------#
+def menu_produto():
+    os.system('cls || clear')
+    print("""
+    ____________________________________________________________
+    |=-=-=-=-=-=->  Você está no Módulo Produtos  <-=-=-=-=-=-=|              
+    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
+    |=-=-=-=-=->    1 - Cadastrar Produto            <-=-=-=-=-|
+    |=-=-=-=-=->    2 - Exibir Dados do Produto      <-=-=-=-=-|
+    |=-=-=-=-=->    3 - Alterar Dados do Produto     <-=-=-=-=-|
+    |=-=-=-=-=->    4 - Excluir Produto              <-=-=-=-=-|
+    |=-=-=-=-=->    0 - Retornar ao menu principal   <-=-=-=-=-|
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     """)
-            module2 = input("Escolha sua opção\n->")
-        
-           
+    module2 = input("Escolha sua opção\n->")
+    return module2
+#----------------------------------------------------------------------------#
+def cadastrar_produto():
+    os.system('cls || clear')
+
+    print("___________________________________________")
+    print("|=-=-=-=-=-> Cadastrar Produto <-=-=-=-=-=|")
+    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    
+    print("--" * 10)
+    product_name = str(input(" Nome: "))
+    print()
+    code = str(input(" Código: "))
+    print()
+    fabrication = str(input(" Data de Fabricação: "))
+    print()
+    validity = str(input(" Data de Validade: "))
+    print()
+    price = float(input(" Preço: "))
+    print()
+    products[code] = [product_name, fabrication, validity, price]
+    print(products)
+    print("--" * 10)
+    print()
+    print("Produto Cadastrado com Sucesso!")
+    print()
+    input("Pressione <ENTER> para continuar.")
+    
+#----------------------------------------------------------------------------#
+def exibir_produto():
+    os.system('cls || clear')
+
+    print("____________________________________________")
+    print("|=-=-=-=-=-=->  Exibir Dados  <-=-=-=-=-=-=|")
+    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+
+    code = input("Digite o Código do Produto: ")
+
+    if code in products:
+        print("--" * 10)
+        print("Nome: ", products[code][0])
+        print()
+        print("Data de Fabricação: ", products[code][1])
+        print()
+        print("Data de Validade: ", products[code][2])
+        print()
+        print("Preço: R$ ", products[code][3])
+        print("--" * 10)
+    else:
+        print("Produto inexistente!")
+                
+    input("Pressione <ENTER> para continuar.")
+#----------------------------------------------------------------------------#
+def alterar_produto():
+    os.system('cls || clear')
+
+    print("___________________________________________")
+    print("|=-=-=-=-=-=-> Alterar Dados <-=-=-=-=-=-=|")
+    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+
+    code = input("Digite o Código do Produto: ")
+
+    if code in products:
+        print("--" * 10)
+        print("Insira os novos dados:")
+        print()
+        product_name = input("Nome: ")
+        print()
+        fabrication = input("Data de Fabricação: ")
+        print()
+        validity = input("Data de Validade:")
+        print()
+        price = input("Preço: R$ ")
+        print("--" * 10)
+        products[code] = [product_name, fabrication, validity, price]
+        print(products)
+    else:
+        print("Produto inexistente!")
+
+    print()
+    print("Produto Alterado com Sucesso!")
+    print()   
+    input("Pressione <ENTER> para continuar.")
+#----------------------------------------------------------------------------#
+def excluir_produto():
+    os.system('cls || clear')
+
+    print("___________________________________________")
+    print("|=-=-=-=-=-> Excluir Produto <-=-=-=-=-=|")
+    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+
+    code = input("Digite o Código do Produto: ")
+
+    if code in products:
+        del products[code]
+
+    else:
+        print("Produto inexistente!")
+    
+    print("Produto Excluído com Sucesso!")
+    print()
+    input("Pressione <ENTER> para continuar")
+#----------------------------------------------------------------------------#
+#----------------------------------------------------------------------------#
+#----------------------------------------------------------------------------#
+#-----------------------------Programa Principal-----------------------------#
+module = " "
+while module != "0":
+    module = menu_principal()
+
+    if module == "1":
+        module2 = " "
+        while module2 != "0":
+            module2 = menu_produto()
+            print()
             if module2 == "1":
-                os.system('cls || clear')
-
-                print("___________________________________________")
-                print("|=-=-=-=-=-> Cadastrar Produto <-=-=-=-=-=|")
-                print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-                
-                print("--" * 10)
-                product_name = str(input(" Nome: "))
-                print()
-                code = str(input(" Código: "))
-                print()
-                fabrication = str(input(" Data de Fabricação: "))
-                print()
-                validity = str(input(" Data de Validade: "))
-                print()
-                price = float(input(" Preço: "))
-                print()
-                products[code] = [product_name, fabrication, validity, price]
-                print(products)
-                print("--" * 10)
-                print()
-                print("Produto Cadastrado com Sucesso!")
-                print()
-                input("Pressione <ENTER> para continuar.")              
-
-           
+                cadastrar_produto()
             elif module2 == "2":
-                os.system('cls || clear')
-
-                print("____________________________________________")
-                print("|=-=-=-=-=-=->  Exibir Dados  <-=-=-=-=-=-=|")
-                print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-
-                code = input("Digite o Código do Produto: ")
-
-                if code in products:
-                    print("--" * 10)
-                    print("Nome: ", products[code][0])
-                    print()
-                    print("Data de Fabricação: ", products[code][1])
-                    print()
-                    print("Data de Validade: ", products[code][2])
-                    print()
-                    print("Preço: R$ ", products[code][3])
-                    print("--" * 10)
-                else:
-                    print("Produto inexistente!")
-                
-                input("Pressione <ENTER> para continuar.")
-
-            
+                exibir_produto()
             elif module2 == "3":
-                os.system('cls || clear')
-
-                print("___________________________________________")
-                print("|=-=-=-=-=-=-> Alterar Dados <-=-=-=-=-=-=|")
-                print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-
-                code = input("Digite o Código do Produto: ")
-
-                if code in products:
-                    print("--" * 10)
-                    print("Insira os novos dados:")
-                    print()
-                    product_name = input("Nome: ")
-                    print()
-                    fabrication = input("Data de Fabricação: ")
-                    print()
-                    validity = input("Data de Validade:")
-                    print()
-                    price = input("Preço: R$ ")
-                    print("--" * 10)
-                    products[code] = [product_name, fabrication, validity, price]
-                    print(products)
-                else:
-                    print("Produto inexistente!")
-
-                print()
-                print("Produto Alterado com Sucesso!")
-                print()   
-                input("Pressione <ENTER> para continuar.")
-
-
+                alterar_produto()
             elif module2 == "4":
-                os.system('cls || clear')
-
-                print("___________________________________________")
-                print("|=-=-=-=-=-> Excluir Produto <-=-=-=-=-=|")
-                print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-
-                code = input("Digite o Código do Produto: ")
-
-                if code in products:
-                    del products[code]
-
-                else:
-                    print("Produto inexistente!")
-                
-                print("Produto Excluído com Sucesso!")
-                print()
-                input("Pressione <ENTER> para continuar")
-
-
-
-
-
- #-----------------------------------------------------------------------#   
+                excluir_produto()
+#----------------------------------------------------------------------------#
+                         
+#----------------------------------------------------------------------------#  
    
     elif module == "2":
         
@@ -283,7 +291,7 @@ while module != "0":
                 print("Venda Excluída com Sucesso!")
                 print()
                 input("Pressione <ENTER> para continuar.")
-#-------------------------------------------------------------------------#    
+#----------------------------------------------------------------------------#    
    
     elif module == "3":
         
@@ -393,7 +401,7 @@ while module != "0":
                 print("Cliente Excluído com Sucesso!")
                 print()
                 input("Pressione <ENTER> para continuar.")        
-#-------------------------------------------------------------------------#    
+#----------------------------------------------------------------------------#   
     elif module == "4":
         os.system('cls || clear')
         
@@ -408,6 +416,6 @@ while module != "0":
     ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     """)
         input("Pressione <ENTER> para continuar.")            
-#-------------------------------------------------------------------------#
+#----------------------------------------------------------------------------#
 
 print("Programa Encerrado!")
