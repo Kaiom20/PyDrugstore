@@ -89,7 +89,7 @@ def exibir_produto():
     os.system('cls || clear')
 
     print("#==========================================#")
-    print("#============|  Exibir Dados  |============#")
+    print("#===========|  Exibir Produto  |===========#")
     print("#==========================================#")
 
     code = input("Digite o Código do Produto: ")
@@ -113,7 +113,7 @@ def alterar_produto():
     os.system('cls || clear')
 
     print("#=========================================#")
-    print("#===========|  Alterar Dados  |===========#")
+    print("#==========|  Alterar Produto  |==========#")
     print("#=========================================#")
 
     code = input("Digite o Código do Produto: ")
@@ -132,13 +132,13 @@ def alterar_produto():
         print("--" * 10)
         products[code] = [product_name, fabrication, validity, price]
         print(products)
+        print()
+        print("Produto Alterado com Sucesso!")
+        print()   
+        input("Pressione <ENTER> para continuar.")
     else:
         print("Produto inexistente!")
-
-    print()
-    print("Produto Alterado com Sucesso!")
-    print()   
-    input("Pressione <ENTER> para continuar.")
+        input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
 def excluir_produto():
     os.system('cls || clear')
@@ -150,14 +150,26 @@ def excluir_produto():
     code = input("Digite o Código do Produto: ")
 
     if code in products:
-        del products[code]
-
+        print("--" * 10)
+        print("Nome: ", products[code][0])
+        print()
+        print("Data de Fabricação: ", products[code][1])
+        print()
+        print("Data de Validade: ", products[code][2])
+        print()
+        print("Preço: R$ ", products[code][3])
+        print("--" * 10)
+        delete = str(input("Tem Certeza que Deseja Excluir esse Produto?[S/N]: "))
+        if delete.upper() == "S":
+            del products[code]
+            print("Produto Excluído com Sucesso!")
+            print()
+            input("Pressione <ENTER> para continuar.")
+        else:
+            input("Pressione <ENTER> para continuar.")
     else:
         print("Produto inexistente!")
-    
-    print("Produto Excluído com Sucesso!")
-    print()
-    input("Pressione <ENTER> para continuar")
+        input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
 def menu_vendas():
     os.system('cls || clear')
@@ -177,8 +189,7 @@ def menu_vendas():
 #----------------------------------------------------------------------------#
 def cadastrar_venda():
     os.system('cls || clear')
-#fazer o sale number ser automatico com while
-#colocar cliente
+
     print("___________________________________________")
     print("|-=-=-=-=-=-> Cadastrar Venda <-=-=-=-=-=-|")
     print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
@@ -260,13 +271,24 @@ def excluir_venda():
     sale_number = input("Insira o Número da Venda: ")
 
     if sale_number in sales:
-        del sales[sale_number]
+        print("--" * 20)
+        print("Produto: ", sales[sale_number][0])
+        print()
+        print("Quantidade: ", sales[sale_number][1])
+        print()
+        print("Data da Venda: ", sales[sale_number][2])
+        print("--" * 20)        
+        delete = str(input("Tem Certeza que Deseja Excluir essa Venda?[S/N]: "))
+        if delete.upper() == "S":
+            del sales[sale_number]
+            print("Venda Excluída com Sucesso!")
+            print()
+            input("Pressione <ENTER> para continuar.")
+        else:
+            input("Pressione <ENTER> para continuar.")
     else:
         print("Venda Inexistente!")
-    
-    print("Venda Excluída com Sucesso!")
-    print()
-    input("Pressione <ENTER> para continuar.")
+        input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
 def menu_clientes():
     os.system('cls || clear')
@@ -363,13 +385,22 @@ def excluir_cliente():
     cpf = input("Insira o Cpf do Cliente: ")
 
     if cpf in clients:
-        del clients[cpf]
+        print("--" * 20)
+        print("Nome: ", clients[cpf][0])
+        print()
+        print("Telefone: ", clients[cpf][1])
+        print("--" * 20)
+        delete = str(input("Tem Certeza que Deseja Excluir esse Cliente?[S/N]: "))
+        if delete.upper() == "S":
+            del clients[cpf]
+            print("Cliente Excluído com Sucesso!")
+            print()
+            input("Pressione <ENTER> para continuar.")
+        else:
+            input("Pressione <ENTER> para continuar.")     
     else:
         print("Cliente Inexistente!")
-    
-    print("Cliente Excluído com Sucesso!")
-    print()
-    input("Pressione <ENTER> para continuar.")     
+        input("Pressione <ENTER> para continuar.")  
 #----------------------------------------------------------------------------#
 def info():
     os.system('cls || clear')
