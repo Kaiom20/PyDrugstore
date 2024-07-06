@@ -65,7 +65,7 @@ def cadastrar_produto():
     print("#=========|  Cadastrar Produto  |=========#")
     print("#=========================================#")
     
-    print("--" * 10)
+    print("--" * 20)
     product_name = str(input(" Nome: "))
     print()
     code = str(input(" Código: "))
@@ -78,7 +78,7 @@ def cadastrar_produto():
     print()
     products[code] = [product_name, fabrication, validity, price]
     print(products)
-    print("--" * 10)
+    print("--" * 20)
     print()
     print("Produto Cadastrado com Sucesso!")
     print()
@@ -95,7 +95,7 @@ def exibir_produto():
     code = input("Digite o Código do Produto: ")
 
     if code in products:
-        print("--" * 10)
+        print("--" * 20)
         print("Nome: ", products[code][0])
         print()
         print("Data de Fabricação: ", products[code][1])
@@ -103,7 +103,7 @@ def exibir_produto():
         print("Data de Validade: ", products[code][2])
         print()
         print("Preço: R$ ", products[code][3])
-        print("--" * 10)
+        print("--" * 20)
     else:
         print("Produto inexistente!")
                 
@@ -119,7 +119,7 @@ def alterar_produto():
     code = input("Digite o Código do Produto: ")
 
     if code in products:
-        print("--" * 10)
+        print("--" * 20)
         print("Insira os novos dados:")
         print()
         product_name = input("Nome: ")
@@ -129,7 +129,7 @@ def alterar_produto():
         validity = input("Data de Validade:")
         print()
         price = input("Preço: R$ ")
-        print("--" * 10)
+        print("--" * 20)
         products[code] = [product_name, fabrication, validity, price]
         print(products)
         print()
@@ -150,7 +150,7 @@ def excluir_produto():
     code = input("Digite o Código do Produto: ")
 
     if code in products:
-        print("--" * 10)
+        print("--" * 20)
         print("Nome: ", products[code][0])
         print()
         print("Data de Fabricação: ", products[code][1])
@@ -158,7 +158,7 @@ def excluir_produto():
         print("Data de Validade: ", products[code][2])
         print()
         print("Preço: R$ ", products[code][3])
-        print("--" * 10)
+        print("--" * 20)
         delete = str(input("Tem Certeza que Deseja Excluir esse Produto?[S/N]: "))
         if delete.upper() == "S":
             del products[code]
@@ -174,15 +174,17 @@ def excluir_produto():
 def menu_vendas():
     os.system('cls || clear')
     print("""
-    ____________________________________________________________
-    |=-=-=-=-=-=-=-> Você está no Módulo Vendas <-=-=-=-=-=-=-=|              
-    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-    |=-=-=-=-=->    1 - Cadastrar Venda              <-=-=-=-=-|
-    |=-=-=-=-=->    2 - Exibir Vendas                <-=-=-=-=-|
-    |=-=-=-=-=->    3 - Alterar Venda                <-=-=-=-=-|
-    |=-=-=-=-=->    4 - Excluir Venda                <-=-=-=-=-|
-    |=-=-=-=-=->    0 - Retornar ao menu principal   <-=-=-=-=-|
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    #==========================================================#
+    #============|   Você está no Módulo Vendas   |============#              
+    #==========================================================#
+    #======|                                            |======#                                    
+    #======|        1 - Cadastrar Venda                 |======#
+    #======|        2 - Exibir Vendas                   |======#
+    #======|        3 - Alterar Venda                   |======#
+    #======|        4 - Excluir Venda                   |======#
+    #======|        0 - Retornar ao menu principal      |======#
+    #======|                                            |======#
+    #==========================================================#
     """)
     module2 = input("Escolha sua opção\n-> ")
     return module2
@@ -190,10 +192,10 @@ def menu_vendas():
 def cadastrar_venda():
     os.system('cls || clear')
 
-    print("___________________________________________")
-    print("|-=-=-=-=-=-> Cadastrar Venda <-=-=-=-=-=-|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-    print("--" * 10)
+    print("#=========================================#")
+    print("#==========|  Cadastrar Venda  |==========#")
+    print("#=========================================#")
+    print("--" * 20)
     sale_number = str(input("Informe o Número da Venda: "))
     print()
     item = str(input("Código do Produto: "))
@@ -203,7 +205,7 @@ def cadastrar_venda():
     data = str(input("Data da venda: "))
     sales[sale_number] = [item, quant, data]
     print(sales)
-    print("--" * 10)
+    print("--" * 20)
     print()
     print("Venda Cadastrada com Sucesso!")
     print()
@@ -213,20 +215,20 @@ def cadastrar_venda():
 def exibir_venda():
     os.system('cls || clear')
 
-    print("______________________________________")
-    print("|=-=-=-=-=-> Exibir Venda <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    print("#====================================#")
+    print("#=========|  Exibir Venda  |=========#")
+    print("#====================================#")
 
     sale_number = input("Insira o Número da Venda: ")
 
     if sale_number in sales:
-        print("--" * 10)
+        print("--" * 20)
         print("Produto: ", sales[sale_number][0])
         print()
         print("Quantidade: ", sales[sale_number][1])    
         print()
         print("Data da Venda: ", sales[sale_number][2])
-        print("--" * 10)
+        print("--" * 20)
     else:
         print("Venda Inexistente!")
     
@@ -235,14 +237,14 @@ def exibir_venda():
 def alterar_venda():
     os.system('cls || clear')
 
-    print("_______________________________________")
-    print("|=-=-=-=-=-> Alterar Venda <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    print("#=====================================#")
+    print("#=========|  Alterar Venda  |=========#")
+    print("#=====================================#")
 
     sale_number = input("Insira o Número da Venda: ")
 
     if sale_number in sales:
-        print("--" * 10)
+        print("--" * 20)
         print("Insira os Novos Dados:")
         print()
         item = str(input("Código do Produto: "))
@@ -250,23 +252,23 @@ def alterar_venda():
         quant = str(input("Quantidade: "))
         print()
         data = str(input("Data da Venda: "))
-        print("--" * 10)
+        print("--" * 20)
         sales[sale_number] = [item, quant, data]
         print(sales)
+        print()
+        print("Venda Alterada com Sucesso!")
+        print()
+        input("Pressione <ENTER> para continuar.")
     else:
         print("Venda Inexistente!")
-    
-    print()
-    print("Venda Alterada com Sucesso!")
-    print()
-    input("Pressione <ENTER> para continuar.")
+        input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
 def excluir_venda():
     os.system('cls || clear')
 
-    print("_______________________________________")
-    print("|=-=-=-=-=-> Excluir Venda <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    print("#=====================================#")
+    print("#=========|  Excluir Venda  |=========#")
+    print("#=====================================#")
 
     sale_number = input("Insira o Número da Venda: ")
 
@@ -293,15 +295,17 @@ def excluir_venda():
 def menu_clientes():
     os.system('cls || clear')
     print("""
-    ______________________________________________________________
-    |=-=-=-=-=-=-=-> Você está no Módulo Clientes <-=-=-=-=-=-=-=|
-    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-    |=-=-=-=-=->     1 - Cadastrar Cliente            <-=-=-=-=-=|
-    |=-=-=-=-=->     2 - Exibir Cliente               <-=-=-=-=-=|
-    |=-=-=-=-=->     3 - Alterar Cliente              <-=-=-=-=-=|
-    |=-=-=-=-=->     4 - Excluir Cliente              <-=-=-=-=-=|
-    |=-=-=-=-=->     0 - Retornar ao Menu Principal   <-=-=-=-=-=|
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    #============================================================#
+    #============|   Você está no Módulo Clientes   |============#
+    #============================================================#
+    #======|                                              |======#
+    #======|        1 - Cadastrar Cliente                 |======#
+    #======|        2 - Exibir Cliente                    |======#
+    #======|        3 - Alterar Cliente                   |======#
+    #======|        4 - Excluir Cliente                   |======#
+    #======|        0 - Retornar ao Menu Principal        |======#
+    #======|                                              |======#
+    #============================================================#
     """)
     module2 = input("Escolha sua opção\n-> ")
     return module2
@@ -309,10 +313,10 @@ def menu_clientes():
 def cadastrar_cliente():
     os.system('cls || clear')
 
-    print("___________________________________________")
-    print("|=-=-=-=-=-> Cadastrar Cliente <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
-    print("--" * 10)
+    print("#=========================================#")
+    print("#=========|  Cadastrar Cliente  |=========#")
+    print("#=========================================#")
+    print("--" * 20)
     client_name = str(input("Nome: "))
     print()
     cpf = str(input("Cpf: "))
@@ -321,7 +325,7 @@ def cadastrar_cliente():
     print()
     clients[cpf] = [client_name, phone_number]
     print(clients)
-    print("--" * 10)
+    print("--" * 20)
     print()
     print("Cliente Cadastrado com Sucesso!")
     print()
@@ -330,18 +334,18 @@ def cadastrar_cliente():
 def exibir_cliente():
     os.system('cls || clear')
 
-    print("________________________________________")
-    print("|=-=-=-=-=-> Exibir Cliente <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    print("#======================================#")
+    print("#=========|  Exibir Cliente  |=========#")
+    print("#======================================#")
 
     cpf = str(input("Insira o Cpf do Cliente: "))
 
     if cpf in clients:
-        print("--" * 10)
+        print("--" * 20)
         print("Nome: ", clients[cpf][0])
         print()
         print("Telefone: ", clients[cpf][1])
-        print("--" * 10)
+        print("--" * 20)
     
     else:
         print("Cliente Inexistente!")
@@ -351,36 +355,38 @@ def exibir_cliente():
 def alterar_cliente():
     os.system('cls || clear')
 
-    print("_________________________________________")
-    print("|=-=-=-=-=-> Alterar Cliente <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    print("#=======================================#")
+    print("#=========|  Alterar Cliente  |=========#")
+    print("#=======================================#")
 
     cpf = str(input("Insira o Cpf do Cliente: "))
 
     if cpf in clients:
-        print("--" * 10)
+        print("--" * 20)
         print("Insira os novos dados:")
         print()
         client_name = str(input("Nome: "))
         print()
         phone_number = str(input("Telefone: "))
-        print("--" * 10)
+        print("--" * 20)
         clients[cpf] = [client_name, phone_number]
         print(clients)
         print()
+        print("Cliente Alterado com Sucesso!")
+        print()
+        input("Pressione <ENTER> para continuar.")    
     else:
         print("Cliente Inexistente")
+        input("Pressione <ENTER> para continuar.")
 
-    print("Cliente Alterado com Sucesso!")
-    print()
-    input("Pressione <ENTER> para continuar.")
+    
 #----------------------------------------------------------------------------#
 def excluir_cliente():
     os.system('cls || clear')
 
-    print("_________________________________________")
-    print("|=-=-=-=-=-> Excluir Cliente <-=-=-=-=-=|")
-    print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+    print("#=======================================#")
+    print("#=========|  Excluir Cliente  |=========#")
+    print("#=======================================#")
 
     cpf = input("Insira o Cpf do Cliente: ")
 
@@ -406,14 +412,16 @@ def info():
     os.system('cls || clear')
         
     print("""
-    ______________________________________________________________
-    |-=-=-=-=-=-=> Você está no Módulo Informações <=-=-=-=-=-=-=|              
-    |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
-    |=-=-=-=-=>    Projeto de Gestão de uma Farmácia   <=-=-=-=-=|
-    |=-=-=-=-=>    Desenvolvedor: Kaio Márcio          <=-=-=-=-=|
-    |=-=-=-=-=>    Email: kaio.lira.080@ufrn.edu.br    <=-=-=-=-=|
-    |=-=-=-=-=>    Whatsapp: (83) 9 8716-3046          <=-=-=-=-=|
-    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    #================================================================#
+    #============|   Você está no Módulo Informações   |=============#              
+    #================================================================#
+    #======|                                                  |======#
+    #======|        Projeto de Gestão de uma Farmácia         |======#
+    #======|        Desenvolvedor: Kaio Márcio                |======#
+    #======|        Email: kaio.lira.080@ufrn.edu.br          |======#
+    #======|        Whatsapp: (83) 9 8716-3046                |======#
+    #======|                                                  |======#
+    #================================================================#
     """)
     input("Pressione <ENTER> para continuar.")   
 #=============================Programa Principal=============================#
