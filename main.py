@@ -8,20 +8,33 @@
 #===========================================================#
 
 
-
+#-----------------------------------Imports----------------------------------#
 import os
    
 #---------------------------------Dicionários--------------------------------#
-products = {}
+# código do produto = [nome, data de fabricação, data de validade, preço]
+products = {
+    '123' : ["Dipirona monoidratada 500mg", "13/07/2024", "13/07/2025", "10,00" ],
+    '456' : ["Ácido tranexâmico 250mg", "20/05/2024", "20/05/2026", "15,50"],
+    '789' : ["Cetoprofeno 150mg", "15/03/2023", "15/08/2025", "12,00"]
+}
 
+# número da venda = [codigo do produto, quantidade, data da venda, cpf do comprador]
+sales = {
+    '001' : ["123", "2", "15/08/2024", "11122233344"],
+    '002' : ["456", "1", "23/05/2024", "22233344455"],
+    '003' : ["789", "1", "20/04/2023", "33344455566"]
+}
 
-sales = {}
-
-
-clients = {}
+# cpf do cliente = [nome do cliente, telefone do cliente]
+clients = {
+    '11122233344' : ["Kaio Márcio", "(83) 98716-3046"],
+    '22233344455' : ["Rhuan Vítor", "(83) 98181-2929"],
+    '33344455566' : ["José Alves", "(84) 99988-7722"]
+}
 
 #-----------------------------------Funções----------------------------------#
-def menu_principal():
+def main_menu():
     os.system('cls || clear')
 
     print("""
@@ -40,7 +53,7 @@ def menu_principal():
     module = input("Escolha sua opção\n-> ")
     return module
 #----------------------------------------------------------------------------#
-def menu_produto():
+def products_menu():
     os.system('cls || clear')
     print("""
     #===========================================================#
@@ -58,7 +71,7 @@ def menu_produto():
     module2 = input("Escolha sua opção\n-> ")
     return module2
 #----------------------------------------------------------------------------#
-def cadastrar_produto():
+def create_product():
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -85,15 +98,15 @@ def cadastrar_produto():
     input("Pressione <ENTER> para continuar.")
     
 #----------------------------------------------------------------------------#
-def exibir_produto():
+def read_product():
     os.system('cls || clear')
 
     print("#==========================================#")
     print("#===========|  Exibir Produto  |===========#")
     print("#==========================================#")
-
+    print()
     code = input("Digite o Código do Produto: ")
-
+    print()
     if code in products:
         print("--" * 20)
         print("Nome: ", products[code][0])
@@ -109,7 +122,7 @@ def exibir_produto():
                 
     input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def alterar_produto():
+def update_product():
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -140,7 +153,7 @@ def alterar_produto():
         print("Produto inexistente!")
         input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def excluir_produto():
+def delete_product():
     os.system('cls || clear')
 
     print("#=======================================#")
@@ -171,7 +184,7 @@ def excluir_produto():
         print("Produto inexistente!")
         input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def menu_vendas():
+def sales_menu():
     os.system('cls || clear')
     print("""
     #==========================================================#
@@ -189,7 +202,7 @@ def menu_vendas():
     module2 = input("Escolha sua opção\n-> ")
     return module2
 #----------------------------------------------------------------------------#
-def cadastrar_venda():
+def create_sale():
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -203,7 +216,9 @@ def cadastrar_venda():
     quant = str(input("Quantidade: "))
     print()
     data = str(input("Data da venda: "))
-    sales[sale_number] = [item, quant, data]
+    print()
+    cpf = str(input("Cpf do Cliente: "))
+    sales[sale_number] = [item, quant, data, cpf]
     print(sales)
     print("--" * 20)
     print()
@@ -212,15 +227,15 @@ def cadastrar_venda():
     input("Pressione <ENTER> para continuar.")
 
 #----------------------------------------------------------------------------#
-def exibir_venda():
+def read_sale():
     os.system('cls || clear')
 
     print("#====================================#")
     print("#=========|  Exibir Venda  |=========#")
     print("#====================================#")
-
+    print()
     sale_number = input("Insira o Número da Venda: ")
-
+    print()
     if sale_number in sales:
         print("--" * 20)
         print("Produto: ", sales[sale_number][0])
@@ -228,13 +243,15 @@ def exibir_venda():
         print("Quantidade: ", sales[sale_number][1])    
         print()
         print("Data da Venda: ", sales[sale_number][2])
+        print()
+        print("Cpf do Cliente: ", sales[sale_number][3])
         print("--" * 20)
     else:
         print("Venda Inexistente!")
     
     input("Pressione <ENTER> para prosseguir.")
 #----------------------------------------------------------------------------#
-def alterar_venda():
+def update_sale():
     os.system('cls || clear')
 
     print("#=====================================#")
@@ -252,8 +269,10 @@ def alterar_venda():
         quant = str(input("Quantidade: "))
         print()
         data = str(input("Data da Venda: "))
+        print()
+        cpf = str(input("Cpf do Cliente: "))
         print("--" * 20)
-        sales[sale_number] = [item, quant, data]
+        sales[sale_number] = [item, quant, data, cpf]
         print(sales)
         print()
         print("Venda Alterada com Sucesso!")
@@ -263,7 +282,7 @@ def alterar_venda():
         print("Venda Inexistente!")
         input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def excluir_venda():
+def delete_sale():
     os.system('cls || clear')
 
     print("#=====================================#")
@@ -292,7 +311,7 @@ def excluir_venda():
         print("Venda Inexistente!")
         input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def menu_clientes():
+def clients_menu():
     os.system('cls || clear')
     print("""
     #============================================================#
@@ -310,7 +329,7 @@ def menu_clientes():
     module2 = input("Escolha sua opção\n-> ")
     return module2
 #----------------------------------------------------------------------------#
-def cadastrar_cliente():
+def create_client():
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -331,7 +350,7 @@ def cadastrar_cliente():
     print()
     input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def exibir_cliente():
+def read_client():
     os.system('cls || clear')
 
     print("#======================================#")
@@ -352,7 +371,7 @@ def exibir_cliente():
     
     input("Pressione <ENTER> para continuar.")
 #----------------------------------------------------------------------------#
-def alterar_cliente():
+def update_client():
     os.system('cls || clear')
 
     print("#=======================================#")
@@ -381,7 +400,7 @@ def alterar_cliente():
 
     
 #----------------------------------------------------------------------------#
-def excluir_cliente():
+def delete_client():
     os.system('cls || clear')
 
     print("#=======================================#")
@@ -427,49 +446,49 @@ def info():
 #=============================Programa Principal=============================#
 module = " "
 while module != "0":
-    module = menu_principal()
+    module = main_menu()
 
     if module == "1":
         module2 = " "
         while module2 != "0":
-            module2 = menu_produto()
+            module2 = products_menu()
             print()
             if module2 == "1":
-                cadastrar_produto()
+                create_product()
             elif module2 == "2":
-                exibir_produto()
+                read_product()
             elif module2 == "3":
-                alterar_produto()
+                update_product()
             elif module2 == "4":
-                excluir_produto()
+                delete_product()
                          
     elif module == "2":
         module2 = " "
         while module2 != "0":
-            module2 = menu_vendas()
+            module2 = sales_menu()
             print()
             if module2 == "1":
-                cadastrar_venda()
+                create_sale()
             elif module2 == "2":
-                exibir_venda()
+                read_sale()
             elif module2 == "3":
-                alterar_venda()
+                update_sale()
             elif module2 == "4":
-                excluir_venda()
+                delete_sale()
     
     elif module == "3":
         module2 = " "
         while module2 != "0":
-            module2 = menu_clientes()
+            module2 = clients_menu()
             print()
             if module2 == "1":
-                cadastrar_cliente()
+                create_client()
             elif module2 == "2":
-                exibir_cliente()
+                read_client()
             elif module2 == "3":
-                alterar_cliente()
+                update_client()
             elif module2 == "4":
-                excluir_cliente()
+                delete_client()
     
     elif module == "4":
         info()
