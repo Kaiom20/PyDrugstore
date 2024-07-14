@@ -4,12 +4,12 @@
 
 #-----------------------------------Imports----------------------------------#
 import os
-
+import validators
 #----------------------------------Dicionário--------------------------------#
 
 # cpf do cliente = [nome do cliente, telefone do cliente]
 clients = {
-    '11122233344' : ["Kaio Márcio", "(83) 98716-3046"],
+    '08069971410' : ["Kaio Márcio", "(83) 98716-3046"],
     '22233344455' : ["Rhuan Vítor", "(83) 98181-2929"],
     '33344455566' : ["José Alves", "(84) 99988-7722"]
 }
@@ -53,12 +53,41 @@ def create_client():
     print("#=========|  Cadastrar Cliente  |=========#")
     print("#=========================================#")
     print("--" * 20)
+
+#nome do cliente [OK]
     client_name = str(input("Nome: "))
+    client_name = client_name.strip()
+    while validators.validate_name(client_name) == False:
+        print("Nome Inválido! Tente Novamente\n(Insira Apenas Letras e Espaços)")    
+        print()
+        client_name = str(input("-> "))
     print()
+   
+#cpf do cliente []
     cpf = str(input("Cpf: "))
+    cpf = cpf.strip()
+    cpf = cpf.replace('.', '')
+    cpf = cpf.replace('-', '')
+    cpf = cpf.replace(' ', '')
+    while validators.validate_cpf(cpf) == False or cpf in clients:
+        print("Cpf Inválido ou já Existente, Tente Novamente.")
+        print()
+        cpf = str(input("-> "))
+        cpf = cpf.strip()
+        cpf = cpf.replace('.', '')
+        cpf = cpf.replace('-', '')
+        cpf = cpf.replace(' ', '')
     print()
+   
+#telefone do cliente [OK]
     phone_number = str(input("Telefone: "))
+    while validators.validate_phone(phone_number) == False:
+        print("Número de Telefone Inválido! Tente Novamente\n(Utilize como referência o modelo: (xx) xxxxx-xxxx)")
+        print()
+        phone_number = str(input("-> "))
+   
     print()
+   
     clients[cpf] = [client_name, phone_number]
     print(clients)
     print("--" * 20)
@@ -81,7 +110,10 @@ def read_client():
     print("#======================================#")
 
     cpf = str(input("Insira o Cpf do Cliente: "))
-
+    cpf = cpf.strip()
+    cpf = cpf.replace('.', '')
+    cpf = cpf.replace('-', '')
+    cpf = cpf.replace(' ', '')
     if cpf in clients:
         print("--" * 20)
         print("Nome: ", clients[cpf][0])
@@ -108,14 +140,28 @@ def update_client():
     print("#=======================================#")
 
     cpf = str(input("Insira o Cpf do Cliente: "))
-
+    cpf = cpf.replace('.', '')
+    cpf = cpf.replace('-', '')
+    cpf = cpf.replace(' ', '')
     if cpf in clients:
         print("--" * 20)
         print("Insira os novos dados:")
         print()
         client_name = str(input("Nome: "))
+        client_name = client_name.strip()
+        while validators.validate_name(client_name) == False:
+            print("Nome Inválido! Tente Novamente\n(Insira Apenas Letras e Espaços)")    
+            print()
+            client_name = str(input("-> "))
+        
         print()
+        
         phone_number = str(input("Telefone: "))
+        while validators.validate_phone(phone_number) == False:
+            print("Número de Telefone Inválido! Tente Novamente\n(Utilize como referência o modelo: (xx) xxxxx-xxxx)")
+            print()
+            phone_number = str(input("-> "))
+        
         print("--" * 20)
         clients[cpf] = [client_name, phone_number]
         print(clients)
@@ -141,7 +187,10 @@ def delete_client():
     print("#=======================================#")
 
     cpf = input("Insira o Cpf do Cliente: ")
-
+    cpf = cpf.strip()
+    cpf = cpf.replace('.', '')
+    cpf = cpf.replace('-', '')
+    cpf = cpf.replace(' ', '')
     if cpf in clients:
         print("--" * 20)
         print("Nome: ", clients[cpf][0])
