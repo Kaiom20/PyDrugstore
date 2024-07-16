@@ -63,7 +63,7 @@ def create_client():
         client_name = str(input("-> "))
     print()
    
-#cpf do cliente []
+#cpf do cliente[OK]
     cpf = str(input("Cpf: "))
     cpf = cpf.strip()
     cpf = cpf.replace('.', '')

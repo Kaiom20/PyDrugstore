@@ -9,13 +9,12 @@
 
 
 #-----------------------------------Imports----------------------------------#
-import os
 import fun_products
 import fun_sales
 import fun_clients
 import interfaces
    
-#=============================Programa Principal=============================#
+#============================ Programa Principal ============================#
 module = " "
 while module != "0":
     module = interfaces.main_menu()
