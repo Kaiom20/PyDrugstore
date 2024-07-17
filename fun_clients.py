@@ -55,16 +55,17 @@ def create_client():
     print("--" * 20)
 
 #nome do cliente [OK]
-    client_name = str(input("Nome: "))
+    client_name = str(input(" Nome: "))
     client_name = client_name.strip()
     while validators.validate_name(client_name) == False:
         print("Nome Inválido! Tente Novamente\n(Insira Apenas Letras e Espaços)")    
         print()
         client_name = str(input("-> "))
+        client_name = client_name.strip()
     print()
    
 #cpf do cliente[OK]
-    cpf = str(input("Cpf: "))
+    cpf = str(input(" Cpf: "))
     cpf = cpf.strip()
     cpf = cpf.replace('.', '')
     cpf = cpf.replace('-', '')
@@ -80,7 +81,7 @@ def create_client():
     print()
    
 #telefone do cliente [OK]
-    phone_number = str(input("Telefone: "))
+    phone_number = str(input(" Telefone: "))
     while validators.validate_phone(phone_number) == False:
         print("Número de Telefone Inválido! Tente Novamente\n(Utilize como referência o modelo: (xx) xxxxx-xxxx)")
         print()

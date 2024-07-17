@@ -51,7 +51,9 @@ def info():
     #======|        Desenvolvedor: Kaio Márcio                |======#
     #======|        Email: kaio.lira.080@ufrn.edu.br          |======#
     #======|        Whatsapp: (83) 9 8716-3046                |======#
-    #======|                                                  |======#
+    #======|        Inspirações:                              |======#
+    #======|          -> Projeto de Flavius Gorgônio          |======#
+    #======|          -> Projeto de Diêgo Axel                |======#
     #================================================================#
     """)
     input("Pressione <ENTER> para continuar.")

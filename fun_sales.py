@@ -9,9 +9,9 @@ import validators
 
 # número da venda = [codigo do produto, quantidade, data da venda, cpf do comprador]
 sales = {
-    '001' : ["123", "2", "15/08/2024", "11122233344"],
-    '002' : ["456", "1", "23/05/2024", "22233344455"],
-    '003' : ["789", "1", "20/04/2023", "33344455566"]
+    '1' : ["123", "2", "15/08/2024", "11122233344"],
+    '2' : ["456", "1", "23/05/2024", "22233344455"],
+    '3' : ["789", "1", "20/04/2023", "33344455566"]
 }
 
 #-----------------------------------Funções----------------------------------#
@@ -55,7 +55,7 @@ def create_sale():
     print("--" * 20)
     
 #Número da Venda [OK]
-    sale_number = str(input("Informe o Número da Venda: "))
+    sale_number = str(input(" Informe o Número da Venda: "))
     sale_number = sale_number.strip().replace(' ', '')
     while not validators.validate_number(sale_number) or sale_number in sales:
         print("Número de Venda Incorreto ou já Existente! Tente Novamente.")
@@ -65,7 +65,7 @@ def create_sale():
     print()
     
 #Codigo do produto [OK]
-    item = str(input("Código do Produto: "))
+    item = str(input(" Código do Produto: "))
     item = item.strip().replace(' ', '')
     while not validators.validate_number(item):
         print("Código de Produto Inválido! Tente Novamente.\n(Insira Apenas Números)")
@@ -76,7 +76,7 @@ def create_sale():
 
 
 #Quantidade de produtos [OK]
-    quant = str(input("Quantidade: "))
+    quant = str(input(" Quantidade: "))
     quant = quant.strip().replace(' ', '')
     while not validators.validate_number(quant):
         print("Quantidade Inválida!, Tente Novamente\n(Insira Apenas Números)")
@@ -86,17 +86,16 @@ def create_sale():
     print()
     
 #Data da Venda [OK] 
-    date = str(input("Data da venda: "))
-    date = date.strip().replace(' ', '').replace('/', '').replace('-', '')
-    while not validators.validate_date(date):
-        print("Data Inválida! Tente Novamente.")
+    date = str(input(" Data da venda: ")) 
+    while not validators.is_valid_date(date):
+        print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
         print()
         date = str(input("-> "))
-        date = date.strip().replace(' ', '').replace('/', '').replace('-', '')
+        date = date.strip()
     print()
 
 #Cpf do cliente [OK]   
-    cpf = str(input("Cpf do Cliente: "))
+    cpf = str(input(" Cpf do Cliente: "))
     cpf = cpf.strip()
     cpf = cpf.replace('.', '')
     cpf = cpf.replace('-', '')
@@ -131,6 +130,7 @@ def read_sale():
     print("#====================================#")
     print()
     sale_number = input("Insira o Número da Venda: ")
+    sale_number = sale_number.strip().replace(' ', '')
     print()
     if sale_number in sales:
         print("--" * 20)
@@ -161,18 +161,55 @@ def update_sale():
     print("#=====================================#")
 
     sale_number = input("Insira o Número da Venda: ")
-
+    sale_number = sale_number.strip().replace(' ', '')
     if sale_number in sales:
         print("--" * 20)
+        
         print("Insira os Novos Dados:")
         print()
         item = str(input("Código do Produto: "))
+        item = item.strip().replace(' ', '')
+        while not validators.validate_number(item):
+            print("Código de Produto Inválido! Tente Novamente.\n(Insira Apenas Números)")
+            print()
+            item = str(input("-> "))
+            item = item.strip().replace(' ', '')
+        
         print()
+        
         quant = str(input("Quantidade: "))
+        quant = quant.strip().replace(' ', '')
+        while not validators.validate_number(quant):
+            print("Quantidade Inválida!, Tente Novamente\n(Insira Apenas Números)")
+            print()
+            quant = str(input("-> "))
+            quant = quant.strip().replace(' ', '')
+        
         print()
+        
         date = str(input("Data da Venda: "))
+        while not validators.is_valid_date(date):
+            print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
+            print()
+            date = str(input("-> "))
+            date = date.strip()
+            
         print()
+        
         cpf = str(input("Cpf do Cliente: "))
+        cpf = cpf.strip()
+        cpf = cpf.replace('.', '')
+        cpf = cpf.replace('-', '')
+        cpf = cpf.replace(' ', '')
+        while validators.validate_cpf(cpf) == False:
+            print("Cpf Inválido, Tente Novamente.")
+            print()
+            cpf = str(input("-> "))
+            cpf = cpf.strip()
+            cpf = cpf.replace('.', '')
+            cpf = cpf.replace('-', '')
+            cpf = cpf.replace(' ', '')
+        
         print("--" * 20)
         sales[sale_number] = [item, quant, date, cpf]
         print(sales)
@@ -198,6 +235,7 @@ def delete_sale():
     print("#=====================================#")
 
     sale_number = input("Insira o Número da Venda: ")
+    sale_number = sale_number.strip().replace(' ', '')
 
     if sale_number in sales:
         print("--" * 20)

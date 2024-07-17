@@ -81,43 +81,45 @@ def validate_number(x):
 #==================================#
 #========== Validar Data ==========#
 #==================================#
-#créditos: feito por mim
-def validate_date(date):
-    verificador = True
-    while verificador:
-        try:
-            dia_venda = int(input("Insira o dia da venda: "))
-            if (dia_venda <= 31) and (dia_venda >= 1):
-                verificador = False
-            else:
-                print("OPS! Aparentemente você colocou um dia inválido. Tente novamante.")
-                print()
-        except ValueError:
-            print("Coloque um dia válido ou certifique-se que está inserindo um número inteiro. Por favor, digite novamente.")
-            print()
-    verificador = True
-    while verificador:
-        try:
-            mes_venda = int(input("Insira o mês da venda: "))
-            if (mes_venda <= 12) and (mes_venda >= 1):
-                verificador = False
-            else:
-                print("OPS! Aparentemente você colocou um mês inválido. Tente novamante.")
-                print()
-        except ValueError:
-            print("Coloque um mês válido ou certifique-se que está inserindo um número inteiro. Por favor, digite novamente.")
-            print()
-    verificador = True
-    while verificador:
-        try:
-            ano_venda = int(input("Insira o ano da venda: "))
-            if (ano_venda <= ano) and (ano_venda >= 2000):
-                verificador = False
-            else:
-                print("OPS! Aparentemente você colocou um ano inválido. Tente novamante.")
-                print()
-        except ValueError:
-            print("Coloque um ano válido ou certifique-se que está inserindo um número inteiro. Por favor, digite novamente.")
-            print()
-    print()
-    data_venda = ("%02d/%02d/%d"%(dia_venda,mes_venda,ano_venda))
+#créditos: feito por Google Gemini
+
+def is_valid_date(date_str):
+    try:
+        day, month, year = date_str.split("/")  # Split by '/' separator
+        day, month, year = int(day), int(month), int(year)  # Convert to integers
+
+        # Check for valid day values
+        if not 1 <= day <= 31:
+            return False
+
+        # Check for valid month values and adjust day range accordingly
+        if not 1 <= month <= 12:
+            return False
+        elif month == 2 and not is_leap_year(year):  # Handle February for non-leap years
+            if day > 28:
+                return False
+        elif month in [4, 6, 9, 11] and day > 30:
+            return False
+
+        # Check for valid year values
+        if year < 1:
+            return False
+
+        return True  # All checks passed, date is valid
+
+    except ValueError:  # Handle invalid input format
+        return False
+
+    except Exception as e:  # Handle unexpected errors
+        print(f"Error during date validation: {e}")
+        return False
+
+def is_leap_year(year):
+
+    if year % 4 != 0:
+        return False
+    elif year % 100 == 0 and year % 400 != 0:
+        return False
+    return True
+
+

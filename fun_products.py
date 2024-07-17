@@ -4,7 +4,7 @@
 
 #-----------------------------------Imports----------------------------------#
 import os
-
+import validators
 #----------------------------------Dicionário--------------------------------#
 
 # código do produto = [nome, data de fabricação, data de validade, preço]
@@ -53,18 +53,45 @@ def create_product():
     print("#=========================================#")
     
     print("--" * 20)
+
+#Código do produto
     code = str(input(" Código: "))
+    code.strip().replace(' ', '')
+    while not validators.validate_number(code) or code in products:
+        print("Código Inválido ou já Existente!\n(Use Apenas Números)")
+        print()
+        code = str(input("->"))
+        code.strip().replace(' ', '')
     print()
+    
+#Nome do produto
     product_name = str(input(" Nome: "))
+    product_name = product_name.strip()
     print()
+    
+#Data de fabricação
     fabrication = str(input(" Data de Fabricação: "))
+    while not validators.is_valid_date(fabrication):
+        print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
+        print()
+        fabrication = str(input("-> "))
+        fabrication = fabrication.strip()
     print()
+
+#Data de Validade
     validity = str(input(" Data de Validade: "))
+    while not validators.is_valid_date(validity):
+        print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
+        print()
+        validity = str(input("-> "))
+        validity = validity.strip()
     print()
+
+#Preço do produto
     price = str(input(" Preço: "))
+  
     print()
     products[code] = [product_name, fabrication, validity, price]
-    print(products)
     print("--" * 20)
     print()
     print("Produto Cadastrado com Sucesso!")
@@ -85,6 +112,7 @@ def read_product():
     print("#==========================================#")
     print()
     code = input("Digite o Código do Produto: ")
+    code.strip().replace(' ', '')
     print()
     if code in products:
         print("--" * 20)
@@ -120,13 +148,29 @@ def update_product():
         print("--" * 20)
         print("Insira os novos dados:")
         print()
-        product_name = input("Nome: ")
+#Nome do produto
+        product_name = str(input(" Nome: "))
+        product_name = product_name.strip()
         print()
-        fabrication = input("Data de Fabricação: ")
+#Data de fabricação
+        fabrication = input(" Data de Fabricação: ")
+        while not validators.is_valid_date(fabrication):
+            print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
+            print()
+            fabrication = str(input("-> "))
+            fabrication = fabrication.strip()
         print()
-        validity = input("Data de Validade:")
+#Data de validade
+        validity = input(" Data de Validade:")
+        while not validators.is_valid_date(validity):
+            print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
+            print()
+            validity = str(input("-> "))
+            validity = validity.strip()
         print()
-        price = input("Preço: R$ ")
+#Preço do produto  
+        price = input(" Preço: R$ ")
+        
         print("--" * 20)
         products[code] = [product_name, fabrication, validity, price]
         print(products)
@@ -152,7 +196,7 @@ def delete_product():
     print("#=======================================#")
 
     code = input("Digite o Código do Produto: ")
-
+    code.strip().replace(' ', '')
     if code in products:
         print("--" * 20)
         print("Nome: ", products[code][0])
