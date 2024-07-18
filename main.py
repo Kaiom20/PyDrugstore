@@ -13,7 +13,7 @@ import fun_products
 import fun_sales
 import fun_clients
 import interfaces
-   
+import fun_reports
 #============================ Programa Principal ============================#
 module = " "
 while module != "0":
@@ -62,8 +62,20 @@ while module != "0":
                 fun_clients.delete_client()
     
     elif module == "4":
+        module2 = ""
+        while module2 != "0":
+            module2 = fun_reports.reports_menu()
+            print()
+            if module2 == "1":
+                fun_reports.reports_products()
+            elif module2 == "2":
+                fun_reports.reports_sales()
+            elif module2 == "3":
+                fun_reports.reports_clients()
+    
+    elif module == "5":
         interfaces.info()
                
 #----------------------------------------------------------------------------#
-
+print()
 print("Programa Encerrado!")

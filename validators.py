@@ -42,7 +42,6 @@ def validate_cpf(cpf):
 #==================================#
 #========== Validar Nome ==========#
 #==================================#
-#créditos: feito por mim 
 def validate_name(x):
     x = x.replace(' ', '')
     if x.isalpha():
@@ -71,7 +70,6 @@ def validate_phone(phone_number):
 #==================================#
 #======== Validar Número ==========#
 #==================================#
-#créditos: feito por mim
 def validate_number(x):
     if x.isdigit():
         return True
