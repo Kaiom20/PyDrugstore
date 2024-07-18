@@ -55,13 +55,13 @@ while module != "0":
             module2 = fun_products.products_menu()
             print()
             if module2 == "1":
-                fun_products.create_product()
+                fun_products.create_product(products)
             elif module2 == "2":
-                fun_products.read_product()
+                fun_products.read_product(products)
             elif module2 == "3":
-                fun_products.update_product()
+                fun_products.update_product(products)
             elif module2 == "4":
-                fun_products.delete_product()
+                fun_products.delete_product(products)
                          
     elif module == "2":
         module2 = " "
@@ -69,13 +69,13 @@ while module != "0":
             module2 = fun_sales.sales_menu()
             print()
             if module2 == "1":
-                fun_sales.create_sale()
+                fun_sales.create_sale(sales)
             elif module2 == "2":
-                fun_sales.read_sale()
+                fun_sales.read_sale(sales)
             elif module2 == "3":
-                fun_sales.update_sale()
+                fun_sales.update_sale(sales)
             elif module2 == "4":
-                fun_sales.delete_sale()
+                fun_sales.delete_sale(sales)
     
     elif module == "3":
         module2 = " "
@@ -83,13 +83,13 @@ while module != "0":
             module2 = fun_clients.clients_menu()
             print()
             if module2 == "1":
-                fun_clients.create_client()
+                fun_clients.create_client(clients)
             elif module2 == "2":
-                fun_clients.read_client()
+                fun_clients.read_client(clients)
             elif module2 == "3":
-                fun_clients.update_client()
+                fun_clients.update_client(clients)
             elif module2 == "4":
-                fun_clients.delete_client()
+                fun_clients.delete_client(clients)
     
     elif module == "4":
         module2 = ""
@@ -97,11 +97,11 @@ while module != "0":
             module2 = fun_reports.reports_menu()
             print()
             if module2 == "1":
-                fun_reports.reports_products()
+                fun_reports.reports_products(products)
             elif module2 == "2":
-                fun_reports.reports_sales()
+                fun_reports.reports_sales(sales)
             elif module2 == "3":
-                fun_reports.reports_clients()
+                fun_reports.reports_clients(clients)
     
     elif module == "5":
         interfaces.info()

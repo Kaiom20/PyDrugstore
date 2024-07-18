@@ -8,7 +8,7 @@ import validators
 #----------------------------------Dicionário--------------------------------#
 
 # número da venda = [codigo do produto, quantidade, data da venda, cpf do comprador]
-sales = {}
+#sales = {}
 
 #-----------------------------------Funções----------------------------------#
 
@@ -42,7 +42,7 @@ def sales_menu():
 #=====================================#
 
 
-def create_sale():
+def create_sale(sales):
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -115,7 +115,7 @@ def create_sale():
 #==================================#
 
 
-def read_sale():
+def read_sale(sales):
     os.system('cls || clear')
 
     print("#====================================#")
@@ -146,7 +146,7 @@ def read_sale():
 #===================================#
 
 
-def update_sale():
+def update_sale(sales):
     os.system('cls || clear')
 
     print("#=====================================#")
@@ -219,7 +219,7 @@ def update_sale():
 #===================================#
 
 
-def delete_sale():
+def delete_sale(sales):
     os.system('cls || clear')
 
     print("#=====================================#")

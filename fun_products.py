@@ -8,7 +8,7 @@ import validators
 #----------------------------------Dicionário--------------------------------#
 
 # código do produto = [nome, data de fabricação, data de validade, preço]
-products = {}
+#products = {}
 
 #-----------------------------------Funções----------------------------------#
 
@@ -41,7 +41,7 @@ def products_menu():
 #=======================================#
 
 
-def create_product():
+def create_product(products):
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -100,7 +100,7 @@ def create_product():
 #====================================#
 
 
-def read_product():
+def read_product(products):
     os.system('cls || clear')
 
     print("#==========================================#")
@@ -131,7 +131,7 @@ def read_product():
 #=====================================#
 
 
-def update_product():
+def update_product(products):
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -183,7 +183,7 @@ def update_product():
 #=====================================#
 
 
-def delete_product():
+def delete_product(products):
     os.system('cls || clear')
 
     print("#=======================================#")

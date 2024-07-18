@@ -8,7 +8,7 @@ import validators
 #----------------------------------Dicionário--------------------------------#
 
 # cpf do cliente = [nome do cliente, telefone do cliente]
-clients = {}
+#clients = {}
 
 #-----------------------------------Funções----------------------------------#
 
@@ -42,7 +42,7 @@ def clients_menu():
 #=======================================#
 
 
-def create_client():
+def create_client(clients):
     os.system('cls || clear')
 
     print("#=========================================#")
@@ -98,7 +98,7 @@ def create_client():
 #====================================#
 
 
-def read_client():
+def read_client(clients):
     os.system('cls || clear')
 
     print("#======================================#")
@@ -128,7 +128,7 @@ def read_client():
 #=====================================#
 
 
-def update_client():
+def update_client(clients):
     os.system('cls || clear')
 
     print("#=======================================#")
@@ -174,7 +174,7 @@ def update_client():
 #=====================================#
 
 
-def delete_client():
+def delete_client(clients):
     os.system('cls || clear')
 
     print("#=======================================#")
