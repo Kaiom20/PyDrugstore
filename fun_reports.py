@@ -29,7 +29,7 @@ def reports_menu():
     """)
     module2 = input("Escolha sua opção\n-> ")
     return module2
-
+    
 #========================================#
 #========== Relatório Produtos ==========#
 #========================================#
@@ -60,7 +60,6 @@ def reports_products():
     
     print()
     input("Pressione <ENTER> para continuar.")
-    os.system('cls || clear')
 #======================================#
 #========== Relatório Vendas ==========#
 #======================================#
@@ -113,6 +112,5 @@ def reports_clients():
         print("--" * 25)
         print("||" * 25)
         print("--" * 25)
-
     print()
     input("Pressione <ENTER> para continuar.")

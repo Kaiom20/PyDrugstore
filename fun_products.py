@@ -173,7 +173,6 @@ def update_product():
         
         print("--" * 20)
         products[code] = [product_name, fabrication, validity, price]
-        print(products)
         print()
         print("Produto Alterado com Sucesso!")
         print()   

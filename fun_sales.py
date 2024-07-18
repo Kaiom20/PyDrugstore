@@ -54,17 +54,15 @@ def create_sale():
     print("#=========================================#")
     print("--" * 20)
     
-#Número da Venda [OK]
-    sale_number = str(input(" Informe o Número da Venda: "))
-    sale_number = sale_number.strip().replace(' ', '')
-    while not validators.validate_number(sale_number) or sale_number in sales:
-        print("Número de Venda Incorreto ou já Existente! Tente Novamente.")
-        print()
-        sale_number = str(input("-> "))
-        sale_number = sale_number.strip().replace(' ', '')
+#Número da Venda // créditos: Fillipe Medeiros
+    if not sales:
+        sale_number = "1"
+    else:
+        sale_number = int(sorted(sales.keys())[-1]) + 1
+        sale_number = str(sale_number)
     print()
     
-#Codigo do produto [OK]
+#Codigo do produto 
     item = str(input(" Código do Produto: "))
     item = item.strip().replace(' ', '')
     while not validators.validate_number(item):
@@ -75,7 +73,7 @@ def create_sale():
     print()
 
 
-#Quantidade de produtos [OK]
+#Quantidade de produtos 
     quant = str(input(" Quantidade: "))
     quant = quant.strip().replace(' ', '')
     while not validators.validate_number(quant):
@@ -85,7 +83,7 @@ def create_sale():
         quant = quant.strip().replace(' ', '')
     print()
     
-#Data da Venda [OK] 
+#Data da Venda 
     date = str(input(" Data da venda: ")) 
     while not validators.is_valid_date(date):
         print("Data Inválida! Tente Novamente.\n(Insira a Data no Formato: xx/xx/xxxx)")
@@ -94,7 +92,7 @@ def create_sale():
         date = date.strip()
     print()
 
-#Cpf do cliente [OK]   
+#Cpf do cliente 
     cpf = str(input(" Cpf do Cliente: "))
     cpf = cpf.strip()
     cpf = cpf.replace('.', '')
@@ -109,7 +107,6 @@ def create_sale():
         cpf = cpf.replace('-', '')
         cpf = cpf.replace(' ', '')
     sales[sale_number] = [item, quant, date, cpf]
-    print(sales)
     print("--" * 20)
     print()
     print("Venda Cadastrada com Sucesso!")
@@ -212,7 +209,6 @@ def update_sale():
         
         print("--" * 20)
         sales[sale_number] = [item, quant, date, cpf]
-        print(sales)
         print()
         print("Venda Alterada com Sucesso!")
         print()

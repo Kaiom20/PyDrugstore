@@ -14,6 +14,10 @@ import fun_sales
 import fun_clients
 import interfaces
 import fun_reports
+import pickle
+
+# Recuperando dados do arquivo #
+
 #============================ Programa Principal ============================#
 module = " "
 while module != "0":
@@ -79,3 +83,8 @@ while module != "0":
 #----------------------------------------------------------------------------#
 print()
 print("Programa Encerrado!")
+print("Até Logo!")
+
+
+
+# Gravando dados em arquivo #

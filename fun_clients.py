@@ -90,7 +90,6 @@ def create_client():
     print()
    
     clients[cpf] = [client_name, phone_number]
-    print(clients)
     print("--" * 20)
     print()
     print("Cliente Cadastrado com Sucesso!")
@@ -165,7 +164,6 @@ def update_client():
         
         print("--" * 20)
         clients[cpf] = [client_name, phone_number]
-        print(clients)
         print()
         print("Cliente Alterado com Sucesso!")
         print()
