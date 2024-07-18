@@ -8,11 +8,7 @@ import validators
 #----------------------------------Dicionário--------------------------------#
 
 # código do produto = [nome, data de fabricação, data de validade, preço]
-products = {
-    '123' : ["Dipirona monoidratada 500mg", "13/07/2024", "13/07/2025", "10,00" ],
-    '456' : ["Ácido tranexâmico 250mg", "20/05/2024", "20/05/2026", "15,50"],
-    '789' : ["Cetoprofeno 150mg", "15/03/2023", "15/08/2025", "12,00"]
-}
+products = {}
 
 #-----------------------------------Funções----------------------------------#
 

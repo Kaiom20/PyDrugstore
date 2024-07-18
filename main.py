@@ -18,6 +18,32 @@ import pickle
 
 # Recuperando dados do arquivo #
 
+products = {}
+try:
+    arq_products = open("products.dat", "rb")
+    products = pickle.load(arq_products)
+except:
+    arq_products = open("products.dat", "wb")
+arq_products.close()
+
+
+sales = {}
+try:
+    arq_sales = open("sales.dat", "rb")
+    sales = pickle.load(arq_sales)
+except:
+    arq_sales = open("sales.dat", "wb")
+arq_sales.close()
+
+
+clients = {}
+try:
+    arq_clients = open("clients.dat", "rb")
+    clients = pickle.load(arq_clients)
+except:
+    arq_clients = open("clients.dat", "wb")
+arq_clients.close()
+
 #============================ Programa Principal ============================#
 module = " "
 while module != "0":
@@ -85,6 +111,16 @@ print()
 print("Programa Encerrado!")
 print("Até Logo!")
 
-
-
 # Gravando dados em arquivo #
+
+arq_products = open("products.dat", "wb")
+pickle.dump(products, arq_products)
+arq_products.close()
+
+arq_sales = open("sales.dat", "wb")
+pickle.dump(sales, arq_sales)
+arq_sales.close()
+
+arq_clients = open("clients.dat", "wb")
+pickle.dump(clients, arq_clients)
+arq_clients.close()
